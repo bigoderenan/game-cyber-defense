@@ -1,10 +1,23 @@
 # Cyber Defense
 
-Demo 2D: proteja o servidor e neutralize 15 ameaças antes de perder os 7 pontos de integridade. Vermelhas precisam de um tiro, amarelas de dois. Contato com o jogador ou chegada ao servidor remove a ameaça e custa um ponto. Se vitória e derrota ocorrerem na mesma atualização, a derrota prevalece.
+Jogo 2D feito em Python com Pygame para a atividade de Linguagem de Programação Aplicada.
+
+O objetivo é proteger o servidor e eliminar 15 ameaças. A partida começa com 7 pontos de integridade. Cada ameaça que encosta no jogador ou chega ao servidor tira um ponto. As vermelhas precisam de um tiro, e as amarelas precisam de dois.
+
+A partida termina com vitória ao atingir a meta ou com derrota quando a integridade chega a zero. Se as duas condições acontecerem ao mesmo tempo, vale a derrota.
+
+Os controles aparecem no menu:
+
+- Setas ou WASD para mover.
+- Espaço para atirar. Pode manter a tecla pressionada.
+- Enter para começar ou jogar novamente.
+- Esc para voltar ao menu. No menu, Esc fecha o jogo.
 
 ## Executar
 
-Na pasta do projeto, com Python instalado:
+Os comandos devem ser executados na pasta que contém o arquivo `main.py`.
+
+No Windows, com Python instalado:
 
 ```text
 python -m venv .venv
@@ -13,29 +26,36 @@ python -m pip install -r requirements.txt
 python main.py
 ```
 
-Setas ou WASD movem; Espaço dispara; Enter inicia ou reinicia; Esc retorna ao menu ou sai quando já está nele. Fechar a janela encerra o jogo.
+No WSL, com Python e suporte gráfico disponíveis:
 
-## Build Windows
+```bash
+python3 -m venv .venv-wsl
+source .venv-wsl/bin/activate
+python -m pip install -r requirements.txt
+python main.py
+```
 
-No Windows, com o ambiente acima ativado:
+O ambiente do WSL é separado do ambiente do Windows.
+
+## Gerar o executável
+
+No terminal do Windows, com o ambiente virtual ativado:
 
 ```text
 python -m pip install -r requirements-build.txt
 build_windows.bat
 ```
 
-O script gera `dist/CyberDefense.exe` e `dist/CyberDefense-Windows.zip`. Extraia o ZIP antes de executar. Os gráficos e a fonte são fornecidos pelo próprio Pygame; não há arquivos externos de imagem ou som para copiar. O executável deve ser conferido na máquina de destino.
+O executável fica em `dist/CyberDefense.exe`, e o ZIP fica em `dist/CyberDefense-Windows.zip`. É preciso extrair o ZIP para abrir o jogo.
 
-## Código e testes
+Os desenhos são feitos pelo Pygame, com a fonte que acompanha a biblioteca. Não há imagens ou sons externos.
 
-`main.py` inicia `Game`, que controla janela, eventos e telas. `Menu` mostra comandos e resultados. `Level` concentra surgimento de ameaças, tiros, colisões e condições de fim. `Player` cuida de movimento e intervalo dos disparos; `Malware`, de movimento e resistência das ameaças. `Const.py` reúne medidas, cores e regras ajustáveis.
+## Testes
+
+Para executar os testes, com o ambiente virtual ativado:
 
 ```text
 python -m unittest discover -s tests -v
 ```
 
-Os testes usam o driver de vídeo dummy do SDL, sem abrir janela, e exercitam a lógica real. Não substituem uma partida manual para conferir os controles e a dificuldade.
-
-Ambiente verificado: Windows 11 de 64 bits, Python 3.12.14, Pygame 2.6.1 e PyInstaller 6.22.3. Outras versões de Python não foram testadas.
-
-Implementação nova baseada na organização conceitual das aulas. O código-fonte do Mountain Shooter não estava disponível neste ambiente para comparação linha por linha. Revise, teste e adapte o projeto antes da entrega.
+Os testes verificam movimento, disparos, colisões, vitória, derrota e troca de telas sem abrir uma janela. Os controles e a dificuldade precisam ser conferidos durante uma partida.
