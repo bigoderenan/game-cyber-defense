@@ -1,6 +1,6 @@
 # Cyber Defense
 
-Jogo 2D feito em Python com Pygame para a atividade de Linguagem de Programação Aplicada.
+Jogo 2D feito em Python com Pygame para a atividade de Linguagem de Programação Aplicada - Uninter.
 
 O objetivo é proteger o servidor e eliminar 15 ameaças. A partida começa com 7 pontos de integridade. Cada ameaça que encosta no jogador ou chega ao servidor tira um ponto. As vermelhas precisam de um tiro, e as amarelas precisam de dois.
 
